@@ -1,286 +1,395 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recherche sur l’éruption dentaire — Présentation 3D</title>
-
-  <!-- Reveal.js CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/solarized.css" id="theme">
-
-  <style>
-    /* --- Styles pour l'effet 3D (cube "dent") --- */
-    .scene {
-      width: 260px;
-      height: 260px;
-      perspective: 900px;
-      margin: 20px auto;
-    }
-    .cube {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(-20deg) rotateY(30deg);
-      transition: transform 0.8s;
-      cursor: grab;
-    }
-    .cube:active { cursor: grabbing; }
-
-    .cube__face {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border: 1px solid rgba(0,0,0,0.08);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      color:#333;
-      background: linear-gradient(180deg,#fff 0%, #f8f8f8 100%);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-      border-radius: 12px;
-    }
-    .cube__face img { max-width: 70%; max-height:70%; }
-
-    .face-front  { transform: translateZ(130px); }
-    .face-back   { transform: rotateY(180deg) translateZ(130px); }
-    .face-right  { transform: rotateY(90deg) translateZ(130px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(130px); }
-    .face-top    { transform: rotateX(90deg) translateZ(130px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(130px); }
-
-    /* Slide layout tweaks */
-    .notes { font-size: 0.85em; color: #444; }
-    .small { font-size: 0.9em; color: #222; }
-    .to-right { display:flex; gap:24px; align-items:center; justify-content:center; flex-wrap:wrap; }
-
-    /* Responsive */
-    @media (max-width:900px){
-      .scene { width: 200px; height: 200px; }
-      .cube__face { width:200px; height:200px; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="reveal">
-    <div class="slides">
-
-      <!-- Slide 1: Titre -->
-      <section>
-        <h1>Recherche sur l’éruption dentaire</h1>
-        <h3>Présentation 3D — Aminemyoune13-spec</h3>
-        <p class="small">Plan: 1) Définition et classification  2) Types de dents  3) Âge d’éruption  4) Rôle des dents</p>
-        <aside class="notes">Introduction courte : définir l’objectif de la recherche et expliquer que des éléments 3D seront utilisés pour mieux visualiser.</aside>
-      </section>
-
-      <!-- Slide 2: Définition et classification -->
-      <section>
-        <h2>1. Définition et classification de la dentition</h2>
-        <div class="to-right">
-          <div style="max-width:520px;">
-            <ul>
-              <li><strong>Éruption dentaire :</strong> processus par lequel une dent perce la gencive et devient visible dans la cavité buccale.</li>
-              <li><strong>Phases :</strong> formation, calcification, migration, pénétration.</li>
-              <li><strong>Classification de la dentition :</strong>
-                <ul>
-                  <li>Déciduelle (dents temporaires, « bébé »)</li>
-                  <li>Mixte (période de transition)</li>
-                  <li>Définitive (dents permanentes)</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 3D cube (illustratif) -->
-          <div class="scene" id="scene-1">
-            <div class="cube" id="cube-1">
-              <div class="cube__face face-front"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Tooth_icon.svg" alt="dent front"></div>
-              <div class="cube__face face-back">Dentition</div>
-              <div class="cube__face face-right">Déciduelle</div>
-              <div class="cube__face face-left">Mixte</div>
-              <div class="cube__face face-top">Définitive</div>
-              <div class="cube__face face-bottom">Éruption</div>
-            </div>
-          </div>
-        </div>
-        <aside class="notes">Expliquer la différence entre les trois types de dentition et l'importance clinique de connaître ces phases.</aside>
-      </section>
-
-      <!-- Slide 3: Types de dents -->
-      <section>
-        <h2>2. Types des dents</h2>
-        <div class="to-right">
-          <div style="max-width:520px;">
-            <ol>
-              <li><strong>Incisives :</strong> bord tranchant — coupe les aliments.</li>
-              <li><strong>Canines :</strong> pointues — déchirent et maintiennent.</li>
-              <li><strong>Prémolaires :</strong> surface occlusale — écrasent et broient.</li>
-              <li><strong>Molares :</strong> grandes surfaces — mastication et broyage.</li>
-            </ol>
-          </div>
-
-          <!-- 3D cube with labels -->
-          <div class="scene" id="scene-2">
-            <div class="cube" id="cube-2">
-              <div class="cube__face face-front">Incisives</div>
-              <div class="cube__face face-back">Canines</div>
-              <div class="cube__face face-right">Prémolaires</div>
-              <div class="cube__face face-left">Molaires</div>
-              <div class="cube__face face-top">Fonctions</div>
-              <div class="cube__face face-bottom">Âge</div>
-            </div>
-          </div>
-        </div>
-        <aside class="notes">Donner exemples cliniques et montrer images radiographiques si disponibles.</aside>
-      </section>
-
-      <!-- Slide 4: L'âge d'éruption -->
-      <section>
-        <h2>3. L’âge de chaque type de dents (éruption moyenne)</h2>
-        <div style="max-width:900px; margin: 0 auto;">
-          <table style="width:100%; border-collapse:collapse;">
-            <tr style="background:#efefef;">
-              <th style="padding:8px; text-align:left">Type</th>
-              <th style="padding:8px; text-align:left">Dents déciduelles (bébé)</th>
-              <th style="padding:8px; text-align:left">Dents permanentes (approx.)</th>
-            </tr>
-            <tr>
-              <td style="padding:8px">Incisives centrales</td>
-              <td style="padding:8px">6-10 mois</td>
-              <td style="padding:8px">7-8 ans</td>
-            </tr>
-            <tr>
-              <td style="padding:8px">Incisives latérales</td>
-              <td style="padding:8px">8-12 mois</td>
-              <td style="padding:8px">8-9 ans</td>
-            </tr>
-            <tr>
-              <td style="padding:8px">Canines</td>
-              <td style="padding:8px">16-20 mois</td>
-              <td style="padding:8px">11-12 ans</td>
-            </tr>
-            <tr>
-              <td style="padding:8px">Prémolaires</td>
-              <td style="padding:8px">— (absentes chez bébé)</td>
-              <td style="padding:8px">10-12 ans</td>
-            </tr>
-            <tr>
-              <td style="padding:8px">Molaires</td>
-              <td style="padding:8px">12-16 mois (1ère molaires déciduelles)</td>
-              <td style="padding:8px">6-7 ans (1ères molaires permanentes); 12-13 ans (2èmes molaires)</td>
-            </tr>
-            <tr>
-              <td style="padding:8px">Dents de sagesse (3èmes molaires)</td>
-              <td style="padding:8px">—</td>
-              <td style="padding:8px">17-25 ans (variable)</td>
-            </tr>
-          </table>
-        </div>
-        <aside class="notes">Préciser que les âges sont des moyennes et varient selon l'individu, le sexe et l'ethnie.</aside>
-      </section>
-
-      <!-- Slide 5: Rôle de chaque type de dent -->
-      <section>
-        <h2>4. Le rôle de chaque type de dent</h2>
-        <div class="to-right">
-          <div style="max-width:520px;">
-            <ul>
-              <li><strong>Incisives :</strong> coupe et aide à la phonation (sons).</li>
-              <li><strong>Canines :</strong> maintien de l'alignement, rôle esthétique, transmission des forces.</li>
-              <li><strong>Prémolaires :</strong> traduit la transition entre canines et molaires, mastication fine.</li>
-              <li><strong>Molares :</strong> broyage, surface occlusale pour la digestion mécanique.</li>
-              <li><strong>Fonctions additionnelles :</strong> phonétique, esthétique, maintien de la hauteur verticale, protection des tissus mous.</li>
-            </ul>
-          </div>
-
-          <div style="max-width:320px; text-align:center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Adult_dentition_plan.svg" alt="schéma dentition" style="max-width:100%; border-radius:8px; box-shadow:0 6px 16px rgba(0,0,0,0.12);">
-            <p class="small">Schéma: dentition permanente (vue simplifiée)</p>
-          </div>
-        </div>
-        <aside class="notes">Donner exemples cliniques : dysfonction masticatoire, troubles de la parole associés à perte de certaines dents.</aside>
-      </section>
-
-      <!-- Slide 6: Conséquences cliniques et prévention -->
-      <section>
-        <h2>Conséquences cliniques et recommandations</h2>
-        <ul>
-          <li>Retard d’éruption: rechercher causes systémiques ou locales.</li>
-          <li>Surveillance de l’ordre d’éruption: permet détection précoce d’anomalies (agénésie, inclusion).</li>
-          <li>Prévention: hygiène, fluor, visites régulières chez le dentiste pédiatrique.</li>
-        </ul>
-        <aside class="notes">Rappeler l'importance du suivi pédiatrique et expliquer quand référer à un spécialiste (orthodontiste, chirurgie).</aside>
-      </section>
-
-      <!-- Slide 7: Ressources et références -->
-      <section>
-        <h2>Ressources & Références</h2>
-        <ol>
-          <li>Textbook de dentisterie pédiatrique (ex. - Stewart / Pinkham).</li>
-          <li>Articles cliniques sur les âges d’éruption (revues odontologiques).</li>
-          <li>Sites: OMS, recommandations nationales.</li>
-        </ol>
-        <p class="small">Images libres de droits: Wikimedia Commons (liens intégrés dans la présentation).</p>
-        <aside class="notes">Proposer des lectures complémentaires et indiquer les sources exactes si la présentation est utilisée académiquement.</aside>
-      </section>
-
-      <!-- Slide 8: Remerciements / Q&A -->
-      <section>
-        <h2>Merci — Questions ?</h2>
-        <p>Présenté par: aminemyoune13-spec</p>
-        <p class="small">Contact / notes: préparer démonstrations 3D supplémentaires si nécessaire.</p>
-      </section>
-
-    </div>
-  </div>
-
-  <!-- Reveal.js -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-
-  <script>
-    // Initialiser Reveal
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      center: true,
-      hash: true,
-      slideNumber: true,
-      transition: 'convex',
-      dependencies: []
-    });
-
-    // Interaction simple pour faire tourner les cubes avec la souris (drag)
-    function makeCubeInteractive(cubeId) {
-      const cube = document.getElementById(cubeId);
-      if (!cube) return;
-      let dragging = false, startX=0, startY=0, rotX=-20, rotY=30;
-
-      cube.addEventListener('mousedown', (e) => { dragging = true; startX = e.clientX; startY = e.clientY; });
-      document.addEventListener('mousemove', (e) => {
-        if (!dragging) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        const newY = rotY + dx * 0.3;
-        const newX = rotX - dy * 0.3;
-        cube.style.transform = `rotateX(${newX}deg) rotateY(${newY}deg)`;
-      });
-      document.addEventListener('mouseup', (e) => {
-        if (!dragging) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        rotY += dx * 0.3;
-        rotX -= dy * 0.3;
-        dragging = false;
-      });
-    }
-
-    makeCubeInteractive('cube-1');
-    makeCubeInteractive('cube-2');
-
-    // Astuce: appuyer sur 's' pour activer le mode speaker notes (Reveal a des plugins si besoin).
-  </script>
-</body>
-</html>
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..fe575f7
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,389 @@
++<!DOCTYPE html>
++<html lang="fr">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Éruption Dentaire - Présentation 3D Interactive</title>
++    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
++    <style>
++        * {
++            margin: 0;
++            padding: 0;
++            box-sizing: border-box;
++        }
++
++        body {
++            font-family: 'Poppins', sans-serif;
++            overflow: hidden;
++            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
++        }
++
++        #canvas-container {
++            position: fixed;
++            top: 0;
++            left: 0;
++            width: 100%;
++            height: 100%;
++            z-index: 1;
++        }
++
++        #ui-overlay {
++            position: fixed;
++            top: 0;
++            left: 0;
++            width: 100%;
++            height: 100%;
++            z-index: 2;
++            pointer-events: none;
++        }
++
++        .content-panel {
++            position: absolute;
++            background: rgba(255, 255, 255, 0.95);
++            border-radius: 20px;
++            padding: 40px;
++            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
++            max-width: 600px;
++            pointer-events: all;
++            backdrop-filter: blur(10px);
++            transition: all 0.5s ease;
++        }
++
++        .content-panel.left {
++            top: 50%;
++            left: 50px;
++            transform: translateY(-50%);
++        }
++
++        .content-panel.right {
++            top: 50%;
++            right: 50px;
++            transform: translateY(-50%);
++        }
++
++        .content-panel.center {
++            top: 50%;
++            left: 50%;
++            transform: translate(-50%, -50%);
++            text-align: center;
++        }
++
++        .content-panel h1 {
++            color: #667eea;
++            font-size: 2.5em;
++            margin-bottom: 20px;
++            font-weight: 700;
++        }
++
++        .content-panel h2 {
++            color: #764ba2;
++            font-size: 2em;
++            margin-bottom: 20px;
++            font-weight: 600;
++        }
++
++        .content-panel h3 {
++            color: #667eea;
++            font-size: 1.5em;
++            margin-top: 25px;
++            margin-bottom: 15px;
++            font-weight: 600;
++        }
++
++        .content-panel p, .content-panel li {
++            color: #333;
++            font-size: 1.1em;
++            line-height: 1.8;
++            margin-bottom: 15px;
++        }
++
++        .content-panel ul, .content-panel ol {
++            margin-left: 25px;
++        }
++
++        .tooth-card {
++            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
++            border-radius: 15px;
++            padding: 20px;
++            margin: 15px 0;
++            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
++        }
++
++        .tooth-card h4 {
++            color: #667eea;
++            font-size: 1.3em;
++            margin-bottom: 10px;
++        }
++
++        .tooth-card p {
++            margin-bottom: 5px;
++            font-size: 1em;
++        }
++
++        .navigation {
++            position: fixed;
++            bottom: 40px;
++            left: 50%;
++            transform: translateX(-50%);
++            display: flex;
++            gap: 20px;
++            z-index: 3;
++            pointer-events: all;
++        }
++
++        .nav-button {
++            background: rgba(255, 255, 255, 0.95);
++            border: none;
++            padding: 15px 30px;
++            border-radius: 50px;
++            font-size: 1.1em;
++            font-weight: 600;
++            color: #667eea;
++            cursor: pointer;
++            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
++            transition: all 0.3s ease;
++            font-family: 'Poppins', sans-serif;
++        }
++
++        .nav-button:hover {
++            transform: translateY(-3px);
++            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
++            background: white;
++        }
++
++        .nav-button:disabled {
++            opacity: 0.5;
++            cursor: not-allowed;
++        }
++
++        .slide-indicator {
++            position: fixed;
++            top: 40px;
++            right: 40px;
++            background: rgba(255, 255, 255, 0.95);
++            padding: 15px 25px;
++            border-radius: 50px;
++            font-weight: 600;
++            color: #667eea;
++            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
++            z-index: 3;
++        }
++
++        .hidden {
++            opacity: 0;
++            pointer-events: none;
++        }
++
++        @media (max-width: 768px) {
++            .content-panel {
++                max-width: 90%;
++                padding: 25px;
++                font-size: 0.9em;
++            }
++
++            .content-panel.left,
++            .content-panel.right {
++                left: 50%;
++                right: auto;
++                transform: translate(-50%, -50%);
++                top: 50%;
++            }
++
++            .content-panel h1 {
++                font-size: 1.8em;
++            }
++
++            .content-panel h2 {
++                font-size: 1.5em;
++            }
++
++            .navigation {
++                bottom: 20px;
++                gap: 10px;
++            }
++
++            .nav-button {
++                padding: 12px 20px;
++                font-size: 1em;
++            }
++        }
++
++        .loading {
++            position: fixed;
++            top: 50%;
++            left: 50%;
++            transform: translate(-50%, -50%);
++            color: white;
++            font-size: 2em;
++            z-index: 10;
++        }
++    </style>
++</head>
++<body>
++    <div id="canvas-container"></div>
++    
++    <div id="ui-overlay">
++        <!-- Slide 1: Title -->
++        <div class="content-panel center slide" id="slide-0">
++            <h1>🦷 Éruption Dentaire</h1>
++            <h2>Présentation 3D Interactive</h2>
++            <p style="font-size: 1.2em; margin-top: 30px;">
++                Une exploration complète de la dentition humaine
++            </p>
++            <p style="margin-top: 20px; color: #666;">
++                Utilisez les boutons de navigation pour explorer
++            </p>
++        </div>
++
++        <!-- Slide 2: Definition -->
++        <div class="content-panel left slide hidden" id="slide-1">
++            <h2>1. Définition et Classification</h2>
++            
++            <h3>Éruption Dentaire</h3>
++            <p>
++                L'éruption dentaire est le processus par lequel une dent se développe 
++                et émerge à travers la gencive pour devenir visible dans la cavité buccale.
++            </p>
++
++            <h3>Phases de l'Éruption</h3>
++            <ul>
++                <li><strong>Formation</strong> - Développement de la dent dans l'os</li>
++                <li><strong>Calcification</strong> - Minéralisation des tissus dentaires</li>
++                <li><strong>Migration</strong> - Mouvement vers la surface</li>
++                <li><strong>Pénétration</strong> - Émergence à travers la gencive</li>
++            </ul>
++
++            <h3>Classification de la Dentition</h3>
++            <ul>
++                <li><strong>Déciduelle</strong> - Dents temporaires (20 dents)</li>
++                <li><strong>Mixte</strong> - Période de transition</li>
++                <li><strong>Définitive</strong> - Dents permanentes (32 dents)</li>
++            </ul>
++        </div>
++
++        <!-- Slide 3: Types -->
++        <div class="content-panel right slide hidden" id="slide-2">
++            <h2>2. Types des Dents</h2>
++            
++            <div class="tooth-card">
++                <h4>🔪 Incisives</h4>
++                <p>Forme: Bord tranchant et plat</p>
++                <p>Nombre: 8 (4 centrales, 4 latérales)</p>
++            </div>
++
++            <div class="tooth-card">
++                <h4>🦷 Canines</h4>
++                <p>Forme: Pointue et conique</p>
++                <p>Nombre: 4 (1 par quadrant)</p>
++            </div>
++
++            <div class="tooth-card">
++                <h4>⚙️ Prémolaires</h4>
++                <p>Forme: Surface occlusale avec cuspides</p>
++                <p>Nombre: 8 (absentes en dentition déciduelle)</p>
++            </div>
++
++            <div class="tooth-card">
++                <h4>🏔️ Molaires</h4>
++                <p>Forme: Large surface de mastication</p>
++                <p>Nombre: 12 (incluant dents de sagesse)</p>
++            </div>
++        </div>
++
++        <!-- Slide 4: Ages -->
++        <div class="content-panel left slide hidden" id="slide-3">
++            <h2>3. Âge d'Éruption</h2>
++            
++            <h3>Dentition Déciduelle</h3>
++            <ul>
++                <li><strong>Incisives centrales:</strong> 6-10 mois</li>
++                <li><strong>Incisives latérales:</strong> 8-12 mois</li>
++                <li><strong>Premières molaires:</strong> 12-16 mois</li>
++                <li><strong>Canines:</strong> 16-20 mois</li>
++                <li><strong>Deuxièmes molaires:</strong> 20-30 mois</li>
++            </ul>
++
++            <h3>Dentition Permanente</h3>
++            <ul>
++                <li><strong>Premières molaires:</strong> 6-7 ans</li>
++                <li><strong>Incisives centrales:</strong> 7-8 ans</li>
++                <li><strong>Incisives latérales:</strong> 8-9 ans</li>
++                <li><strong>Canines:</strong> 11-12 ans</li>
++                <li><strong>Prémolaires:</strong> 10-12 ans</li>
++                <li><strong>Deuxièmes molaires:</strong> 12-13 ans</li>
++                <li><strong>Dents de sagesse:</strong> 17-25 ans</li>
++            </ul>
++        </div>
++
++        <!-- Slide 5: Roles -->
++        <div class="content-panel right slide hidden" id="slide-4">
++            <h2>4. Rôle de Chaque Type</h2>
++            
++            <h3>🔪 Incisives</h3>
++            <p>
++                <strong>Fonction principale:</strong> Couper les aliments<br>
++                <strong>Rôles secondaires:</strong> Phonation, esthétique du sourire
++            </p>
++
++            <h3>🦷 Canines</h3>
++            <p>
++                <strong>Fonction principale:</strong> Déchirer les aliments<br>
++                <strong>Rôles secondaires:</strong> Maintien de l'alignement dentaire, 
++                transmission des forces occlusales
++            </p>
++
++            <h3>⚙️ Prémolaires</h3>
++            <p>
++                <strong>Fonction principale:</strong> Écraser et broyer<br>
++                <strong>Rôles secondaires:</strong> Transition entre canines et molaires, 
++                mastication fine
++            </p>
++
++            <h3>🏔️ Molaires</h3>
++            <p>
++                <strong>Fonction principale:</strong> Broyage et mastication<br>
++                <strong>Rôles secondaires:</strong> Digestion mécanique, 
++                maintien de la dimension verticale
++            </p>
++        </div>
++
++        <!-- Slide 6: Conclusion -->
++        <div class="content-panel center slide hidden" id="slide-5">
++            <h2>Importance Clinique</h2>
++            
++            <h3>Surveillance de l'Éruption</h3>
++            <p>
++                Le suivi de l'ordre et du timing d'éruption permet la détection 
++                précoce d'anomalies telles que:
++            </p>
++            <ul style="text-align: left;">
++                <li>Agénésie dentaire (absence de dents)</li>
++                <li>Inclusion dentaire</li>
++                <li>Retard d'éruption</li>
++                <li>Éruption ectopique</li>
++            </ul>
++
++            <h3>Recommandations</h3>
++            <ul style="text-align: left;">
++                <li>Hygiène bucco-dentaire dès la première dent</li>
++                <li>Visites régulières chez le dentiste pédiatrique</li>
++                <li>Fluoruration appropriée</li>
++                <li>Surveillance orthodontique si nécessaire</li>
++            </ul>
++        </div>
++    </div>
++
++    <div class="slide-indicator" id="slide-indicator">
++        Slide 1 / 6
++    </div>
++
++    <div class="navigation">
++        <button class="nav-button" id="prev-btn" disabled>← Précédent</button>
++        <button class="nav-button" id="next-btn">Suivant →</button>
++    </div>
++
++    <div class="loading" id="loading">Chargement de la scène 3D...</div>
++
++    <script type="module" src="./app.js"></script>
++</body>
++</html>
